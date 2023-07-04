@@ -9,23 +9,17 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
-// model User {
-//   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-//   email     String?  @unique
-//   name      String
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-// }
+
 model Example {
     id        String   @id @default(auto()) @map("_id") @db.ObjectId
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
 
-// // Necessary for Next auth
+// Necessary for Next auth
 // model Account {
-//     id                String  @id @default(cuid())
-//     userId            String
+//     id                String  @id @default(auto()) @map("_id") @db.ObjectId
+//     userId            String  @db.ObjectId
 //     type              String
 //     provider          String
 //     providerAccountId String
@@ -42,15 +36,15 @@ model Example {
 // }
 
 // model Session {
-//     id           String   @id @default(cuid())
+//     id           String   @id @default(auto()) @map("_id") @db.ObjectId
 //     sessionToken String   @unique
-//     userId       String
+//     userId       String   @db.ObjectId
 //     expires      DateTime
 //     user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 // }
 
 // model User {
-//     id            String    @id @default(cuid())
+//     id            String    @id @default(auto()) @map("_id") @db.ObjectId
 //     name          String?
 //     email         String?   @unique
 //     emailVerified DateTime?
