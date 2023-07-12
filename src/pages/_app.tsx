@@ -6,16 +6,16 @@ import "~/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 
 const MyApp: AppType<{ session: Session | null }> = ({
-  Component,
-  pageProps: { session, ...pageProps },
+    Component,
+    pageProps: { session, ...pageProps },
 }) => {
-  return (
-    <ClerkProvider {...pageProps}>
-      <SessionProvider session={session}>
-        <Component {...pageProps} />
-      </SessionProvider>
-    </ClerkProvider>
-  );
+    return (
+        <ClerkProvider {...pageProps}>
+            <SessionProvider session={session}>
+                <Component {...pageProps} />
+            </SessionProvider>
+        </ClerkProvider>
+    );
 };
 
 export default api.withTRPC(MyApp);
