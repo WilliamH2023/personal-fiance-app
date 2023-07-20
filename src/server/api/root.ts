@@ -1,4 +1,5 @@
 import { accountsRouter } from "~/server/api/routers/accounts";
+import { linkTokenRouter } from "~/server/api/routers/linkToken";
 import { createTRPCRouter } from "~/server/api/trpc";
 
 /**
@@ -8,6 +9,7 @@ import { createTRPCRouter } from "~/server/api/trpc";
  */
 export const appRouter = createTRPCRouter({
     accounts: accountsRouter,
+    linkToken: linkTokenRouter,
 });
 
 // export type definition of API

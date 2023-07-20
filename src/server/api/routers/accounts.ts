@@ -1,3 +1,4 @@
+import { clerkClient, useUser } from "@clerk/nextjs";
 import { z } from "zod";
 import {
     createTRPCRouter,
@@ -6,8 +7,12 @@ import {
 } from "~/server/api/trpc";
 
 export const accountsRouter = createTRPCRouter({
-    getAll: publicProcedure.query(({ ctx }) => {
-        return ctx.prisma.account.findMany();
+    getAll: publicProcedure.query(async ({ ctx }) => {
+        const accountInfo = await ctx.prisma.account.findMany({
+            // where: { userId: user.id },
+        });
+
+        return accountInfo;
     }),
 
     getSecretMessage: protectedProcedure.query(() => {
