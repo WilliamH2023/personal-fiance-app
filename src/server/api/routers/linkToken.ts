@@ -20,12 +20,12 @@ const client = new PlaidApi(configuration);
 export const linkTokenRouter = createTRPCRouter({
     createLinkToken: publicProcedure.query(async () => {
         const tokenResponse = await client.linkTokenCreate({
-            user: process.env.PLAID_CLIENT_ID,
+            user: { client_user_id: process.env.PLAID_CLIENT_ID },
             client_name: "Plaid's Tiny Quickstart",
             language: "en",
-            products: ["auth"],
-            country_codes: ["US"],
-            redirect_uri: process.env.PLAID_SANDBOX_REDIRECT_URI,
+            products: process.env.PLAID_PRODUCTS,
+            country_codes: process.env.PLAID_COUNTRY_CODES,
+            redirect_uri: "locahost:3000",
         });
 
         return tokenResponse.data;
