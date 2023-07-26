@@ -8,7 +8,7 @@ import {
     useUser,
     SignOutButton,
 } from "@clerk/nextjs";
-import PlaidLogin from "./component/plaidLogin";
+import PLink from "./component/plaidLogin";
 
 export default function Home() {
     const user = useUser();
@@ -35,7 +35,7 @@ export default function Home() {
                         {!!user.isSignedIn && (
                             <div className="flex justify-around">
                                 <div>
-                                    <PlaidLogin />
+                                    <PLink />
                                 </div>
                                 <div>
                                     <SignOutButton />
@@ -46,7 +46,7 @@ export default function Home() {
 
                     <div className="flex flex-col">
                         {!!user.isSignedIn &&
-                            [...data, ...data]?.map((account) => (
+                            [...data]?.map((account) => (
                                 <div
                                     key={account.id}
                                     className="border-b border-slate-400 p-8"
