@@ -32,6 +32,13 @@ export default function Home() {
                         )}
                         {!!user.isSignedIn && (
                             <div className="flex justify-around">
+                                <div className="flex">
+                                    <img
+                                        src={user.user.imageUrl}
+                                        className="h-14 w-14 rounded-full"
+                                    />{" "}
+                                    {user.user.fullName}{" "}
+                                </div>
                                 <div>
                                     <SignOutButton />
                                 </div>
