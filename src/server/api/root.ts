@@ -1,5 +1,5 @@
 import { accountsRouter } from "~/server/api/routers/accounts";
-//import { linkTokenRouter } from "~/server/api/routers/linkToken";
+import { linkTokenRouter } from "~/server/api/routers/linkToken";
 import { createTRPCRouter } from "~/server/api/trpc";
 
 /**

@@ -1,6 +1,5 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
-import Link from "next/link";
 import { api } from "~/utils/api";
 import {
     SignUpButton,
@@ -8,7 +7,6 @@ import {
     useUser,
     SignOutButton,
 } from "@clerk/nextjs";
-import PLink from "./component/plaidLogin";
 
 export default function Home() {
     const user = useUser();
@@ -34,9 +32,6 @@ export default function Home() {
                         )}
                         {!!user.isSignedIn && (
                             <div className="flex justify-around">
-                                <div>
-                                    <PLink />
-                                </div>
                                 <div>
                                     <SignOutButton />
                                 </div>
