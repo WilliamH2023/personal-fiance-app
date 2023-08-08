@@ -19,7 +19,7 @@ const client = new PlaidApi(configuration);
 
 export const linkTokenRouter = createTRPCRouter({
     createLinkToken: publicProcedure.query(async () => {
-        const request: LinkTokenCreateRequest = {
+        const request = {
             user: { client_user_id: process.env.PLAID_CLIENT_ID },
             client_name: "Plaid's Tiny Quickstart",
             language: "en",
