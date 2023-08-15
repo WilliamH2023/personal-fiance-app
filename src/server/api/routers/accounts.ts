@@ -8,9 +8,7 @@ import {
 
 export const accountsRouter = createTRPCRouter({
     getAll: publicProcedure.query(async ({ ctx }) => {
-        const accountInfo = await ctx.prisma.account.findMany({
-            // where: { userId: user.id },
-        });
+        const accountInfo = await ctx.prisma.account.findMany();
 
         return accountInfo;
     }),

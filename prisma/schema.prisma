@@ -23,10 +23,14 @@ model Account {
   officialName      		String?
   subtype           		String
   type              		String
+  // owner                 User   @relation(fields: [ownerId], references: [id])
+  // ownerId               String @db.ObjectId
 }
 
 // model User {
-
+//   id                		String       @id @default(auto()) @map("_id") @db.ObjectId
+//   clerkId               String    	 @unique
+//   account               Account[]    
 // }
 // model Transaction{
 // 	id                 ObjectId            @id @map("_id") @db.ObjectId

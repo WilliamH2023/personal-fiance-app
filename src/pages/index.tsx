@@ -7,14 +7,13 @@ import {
     useUser,
     SignOutButton,
 } from "@clerk/nextjs";
+import AccountViews from "./component/accountViews";
 
 export default function Home() {
     const user = useUser();
 
-    const { data, isLoading } = api.accounts.getAll.useQuery();
     // const token = api.linkToken.createLinkToken.useQuery(user?.id);
-    if (isLoading) return <div> Loading...</div>;
-    if (!data) return <div> Something went wrong...</div>;
+
     return (
         <>
             <Head>
@@ -23,7 +22,7 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className="flex h-screen justify-center">
-                <div className="md: bg-red-2xl h-full w-full border-x border-slate-200">
+                <div className="md: h-full w-full max-w-3xl border-x border-slate-400 ">
                     <div className="border-b border-slate-400 p-4 ">
                         {!user.isSignedIn && (
                             <div className="flex justify-center">
@@ -45,18 +44,7 @@ export default function Home() {
                             </div>
                         )}
                     </div>
-
-                    <div className="flex flex-col">
-                        {!!user.isSignedIn &&
-                            [...data]?.map((account) => (
-                                <div
-                                    key={account.id}
-                                    className="border-b border-slate-400 p-8"
-                                >
-                                    {account.isoCurrencyCode}{" "}
-                                </div>
-                            ))}
-                    </div>
+                    <AccountViews />
                 </div>
             </main>
         </>
